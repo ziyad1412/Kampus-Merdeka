@@ -1,0 +1,62 @@
+<script language="javascript">
+
+    // Buat Variabel
+    const pegawai = "Ridwan";
+    const jabatan = "Manager";
+    const status = "Menikah";
+
+    // Buat Logic Gaji Pokok
+    let gajipokok = ''
+    if( jabatan == "Manager"){
+        gajipokok = 15000000
+    }else if( jabatan == "Asisten Manager"){
+        gajipokok = 10000000
+    }else{
+        gajipokok = 5000000
+    }
+    
+    // Tunjangan & BPJS
+    let tunjangan_jabatan = gajipokok * (15/100);
+    let bpjs = gajipokok * (10/100);
+    let tunjangan_keluarga = (status =="Menikah") ? gajipokok * (20/100) : 0;
+
+    // Total Gaji
+    const total_gaji = gajipokok + tunjangan_jabatan + bpjs + tunjangan_keluarga;
+    
+    document.write(`
+    Nama Pegawai : ${pegawai} <br/>
+    Jabatan : ${jabatan} <br/>
+    Status : ${status} <br/>
+    <table border="1">
+        <thead bgcolor="grey">
+            <tr>
+                <td>Data</td>
+                <td>Keterangan</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Gaji Pokok</td>
+                <td>Rp. ${gajipokok} </td>
+            </tr>
+            <tr>
+                <td>Tunjangan Jabatan</td>
+                <td>Rp. ${tunjangan_jabatan} </td>
+            </tr>
+            <tr>
+                <td>BPJS</td>
+                <td>Rp. ${bpjs} </td>
+            </tr>
+            <tr>
+                <td>Tunjangan Keluarga</td>
+                <td>Rp. ${tunjangan_keluarga} </td>
+            </tr>
+        </tbody>
+        <tfoot bgcolor="yellow">
+            <tr>
+                <td>Total Gaji</td>
+                <td>Rp. ${total_gaji} </td>
+            </tr>
+        </tfoot>
+    </table>`);
+</script>
