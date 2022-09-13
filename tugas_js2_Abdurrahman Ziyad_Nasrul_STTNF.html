@@ -1,0 +1,99 @@
+<!--
+Diketahui di sebuah kampung ada 100 mahasiswa
+cetak daftar mahasiswa ke dalam sebuah tabel
+dengan data:
+No, Nama, Alamat
+Contoh:
+1 Mahasiswa1 Jl. Bunga No. 1
+2 Mahasiswa2 Jl. Bunga No. 2 
+Di tabel untuk baris ganjil warna biru
+Di tabel untuk baris genap warna kuning
+-->
+<h3 align="center">DAFTAR PEGAWAI</h3>
+<table align="center" cellpadding="10" border="1">
+    <thead>
+        <tr bgcolor="tomato">
+            <th>NO</th>
+            <th>NAMA</th>
+            <th>JABATAN</th>
+            <th>AGAMA</th>
+            <th>GAJI POKOK</th>
+            <th>TUNJANGAN JABATAN</th>
+            <th>TUNJANGAN KESEHATAN</th>
+            <th>GAJI KOTOR</th>
+            <th>ZAKAT PROFESI</th>
+            <th>TAKE HOME PAY</th>
+        </tr>
+    </thead>
+    <tbody>
+        <script language="javascript">
+            var no, warna, jabatan, agama, gajipokok, tunjangan_jabatan, tunjangan_kesehatan, gajikotor, zakat_profesi, take_home_pay;
+            for (no = 1; no <= 100; no++) {
+
+                // Logic Warna
+                warna = (no % 2 == 0) ? 'aqua' : 'yellow';
+
+                // Logic Jabatan
+                if (no >= 1 && no <= 25) {
+                    jabatan = "Manager";
+                }
+                else if (no >= 26 && no <= 50) {
+                    jabatan = "Asisten Manager";
+                }
+                else if (no >= 51 && no <= 75) {
+                    jabatan = "Supervisor";
+                }
+                else {
+                    jabatan = "Staff";
+                }
+
+                // Logic Agama
+                agama = (no % 2 == 0) ? 'Non Muslim' : 'Muslim';
+
+                // Logic Gaji Pokok
+                switch (jabatan) {
+                    case "manager":
+                        gajipokok = 15000000;
+                        break;
+                    case "asisten manager":
+                        gajipokok = 10000000;
+                        break;
+                    case "supervisor":
+                        gajipokok = 7000000;
+                        break;
+                    default:
+                        gajipokok = 4000000;
+                        break;
+                }
+
+                // Logic Tunjangan Jabatan
+                tunjangan_jabatan = gajipokok * (20/100);
+
+                // Logic Tunjangan Kesehatan
+                tunjangan_kesehatan = gajipokok * (10/100);
+
+                // Logic Gaji Kotor
+                gajikotor = gajipokok + tunjangan_jabatan + tunjangan_kesehatan;
+
+                // Logic Zakat
+                zakat_profesi = (agama == "Muslim") ? gajikotor * (2.5/100) : 0 ;
+
+                // Logic Take Home Pay
+                take_home_pay = gajikotor - zakat_profesi;
+
+                document.write(`<tr bgcolor="${warna}">
+                        <td>${no}</td>
+                        <td>Pegawai${no}</td>
+                        <td>${jabatan}</td>
+                        <td>${agama}</td>
+                        <td>Rp.${gajipokok}</td>
+                        <td>Rp.${tunjangan_jabatan}</td>
+                        <td>Rp.${tunjangan_kesehatan}</td>
+                        <td>Rp.${gajikotor}</td>
+                        <td>Rp.${zakat_profesi}</td>
+                        <td>Rp.${take_home_pay}</td>
+                    </tr>`);
+            }    
+        </script>
+    </tbody>
+</table>_
